@@ -16,11 +16,17 @@ width: 100%;
     max-width: 100%;
     width: 1400px;
     height: 900px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    
+}
+.initial-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
+    
 }
 .ai-img {
     position:absolute;
