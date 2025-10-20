@@ -115,13 +115,19 @@ width: 100%;
     border: 2px solid white;
     width: 95%;
     height: 65%;
+    background-image: url("/img/map-background-08.png");
+    
+    background-size:100%;
+    background-repeat: no-repeat;
+    position:relative;  
 }
-.battle-section {
-    background-color: #562718;
-    width: 95%;
-    height: 15%;
-   
+.map-section img {
+    width: 100px;
+    position: absolute;
+    top: 100px;
+    left: 50px;
 }
+
 .boss {
     margin-left: 10px;
     margin-top: 10px;
@@ -155,4 +161,48 @@ width: 100%;
     font-size: 30px;
     padding:10px;
     border: 1px dotted white;
+}
+.battle-section {
+    width: 95%;
+    height: 15%;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    gap: 30px;
+   
+}
+.player-container {
+    
+    width: 50%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.vs-container {
+    color: white;
+    font-family: "VT323", monospace;
+
+    font-size: 40px;
+}
+.ai-container {
+    
+    width: 50%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.code-collect-box{
+    border: 1px solid white;
+    width: 70%;
+    height: 80%;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+.player-container img {
+    width: 100px;
+}
+.ai-container img {
+    width: 100px;
 }
