@@ -4,12 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=VT323&display=swap" rel="stylesheet">   
     <title>Developer vs AI</title>
   </head>
   <body>
-    <section class="game-container">
+      <section class="game-container">
+        <!-- Initial game screen -->
       <div class="game-box">
-        <!-- Initial screen -->
         <div class="initial-screen">
           <img class="ai-img" src="./img/ai-character.png" alt="" />
           <img
@@ -25,7 +28,31 @@
             <button class="rules-btn liquid">Rules</button>
           </div>
         </div>
+         <!-- Game run screen-->
+        <div class="game-run-screen">
+            <div class="boss-section">
+                <div class="boss">
+                    <img src="./img/boss-img.png" alt="">
+                </div>
+                <p class="speech-bubble">Print hello world in the browser console</p>
+                <div class="timer">
+                    <p class="timer-set"> 1:00 </p>
+                </div>   
+                <div class="level">
+                    <p class="current-total-levels"> 1/10</p>
+                </div>
+            </div>
+            <div class="map-section">
+                
+            </div>
+             <div class="battle-section">
+                
+            </div>
+        </div>
       </div>
+    </section>
+   
+
     </section>
     <script src="./javscript/main.js"></script>
   </body>
