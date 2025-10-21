@@ -2,8 +2,8 @@ class Player {
     constructor(){
         this.x = 70,
         this.y = 60,
-        this.w = 30,
-        this.h = 60,
+        this.w = 25,
+        this.h = 55,
         this.speed = 10
         this.imgNode = document.createElement("img")
         this.imgNode.src = './img/developer-character-topdown.png'
@@ -26,6 +26,7 @@ class Player {
             this.imgNode.style.top = `${this.x}px`
         }
         if(keyPressed === "w" || keyPressed === "ArrowUp"){
+            //Add a condition here to check if the x is not grather than the size of the map like if x is = to 10px don't do nothing.
             this.x -= this.speed
             console.log(this.x)
             this.imgNode.style.top = `${this.x}px`
