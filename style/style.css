@@ -113,8 +113,8 @@ width: 100%;
 }
 .map-section {
     border: 2px solid white;
-    width: 95%;
-    height: 65%;
+    width: 1150px;
+    height: 900px;
     background-image: url("/img/map-background-08.png");
     
     background-size:100%;

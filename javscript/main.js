@@ -9,16 +9,19 @@ let player
 
 // Event Listener
 startGameBtnNode.addEventListener('click', startGame)
-
+window.addEventListener('keydown', (e)=> {
+    console.log(e.key)
+    player.playerMovement(e.key)
+})
 
 function startGame(){
     initialScreenNode.style.display = "none"
     gameRunScreenNode.style.display = "flex"
     
     player = new Player
-    console.log(player)
     player.addPlayerDOM()
-
+    
+    
     // Start the main game loop
     const mainGameLoopId = setInterval(gameRunning,1000/60)
     
@@ -29,6 +32,3 @@ function gameRunning() {
 }
 
 
-function gameLoop() {
-    console.log('looping of the game')
-}
