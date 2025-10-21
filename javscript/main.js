@@ -3,26 +3,16 @@ const startGameBtnNode = document.querySelector('.start-btn')
 const gameRunScreenNode = document.querySelector('.game-run-screen')
 const initialScreenNode = document.querySelector('.initial-screen')
 
-//Global Variables
-
-// console.log(cards.addCodeCardsDOM())
-let player
-
 // Event Listener
 startGameBtnNode.addEventListener('click', startGame)
 window.addEventListener('keydown', (e)=> {
     player.playerMovement(e.key)
 })
 
-function startGame(){
-    initialScreenNode.style.display = "none"
-    gameRunScreenNode.style.display = "flex"
-    
-    const asnwerArray = ['console','.log','("hello world")']
-    player = new Player
-    player.addPlayerDOM()
-
-    const cardsArray = [
+//Global Variables
+let playerAnswerArray = []
+let correctAsnwerArray = ['console','.log','("hello world")']
+ const cardsArray = [
         new CodeCard('let'),
         new CodeCard('function'),
         new CodeCard('.log'),
@@ -33,40 +23,70 @@ function startGame(){
         new CodeCard('.if'),
         new CodeCard('console')
     ]
+let player
+let mainGameLoopId
+
+//Global Game Functions
+function startGame(){
+    initialScreenNode.style.display = "none"
+    gameRunScreenNode.style.display = "flex"
+    
+    player = new Player
+    player.addPlayerDOM()
+
     displayAllCards(cardsArray) 
-    console.log(cardsArray[0])
-    console.log(player)
     
     
     // Start the main game loop
-    const mainGameLoopId = setInterval(gameRunning,1000/60)
+   mainGameLoopId = setInterval(mainGameLoop,1000/60)
     
-    function checkColisionPlayerCodeBox () {
-      
-        cardsArray.forEach((card) =>{
-            if (
-                   player.x < card.x + card.w &&
-                    player.x + player.w > card.x &&
-                    player.y < card.y + card.h &&
-                    player.y + player.h > card.y
-            ) {
-                console.log('player collide')
-            }
-        })
-      }
-      function gameRunning() {
+        
+}
+
+function mainGameLoop() {
           checkColisionPlayerCodeBox()
+          checkWinner()
       }
-      function displayAllCards(cardsArr) {
+
+
+
+function displayAllCards(cardsArr) {
           for(let i = 0; i < cardsArr.length; i++){
               cardsArr[i].addCodeCardDOM()
           }
       
       }
 
+function checkWinner() {
+        
+        let counterCorrectWords = 0
+        for (let i = 0; i < correctAsnwerArray.length; i++ ){
+            if(correctAsnwerArray[i] === playerAnswerArray[i]){
+                counterCorrectWords++
+            }
+        }
+        if(counterCorrectWords === correctAsnwerArray.length){
+            alert('you won the game')
+            clearInterval(mainGameLoopId)
+        }
+      }
+
+function checkColisionPlayerCodeBox () {
       
-}
-
-
+        cardsArray.forEach((card,index) =>{
+            if (
+                   player.x < card.x + card.w &&
+                    player.x + player.w > card.x &&
+                    player.y < card.y + card.h &&
+                    player.y + player.h > card.y
+            ) {
+                const catchName = card.cardName
+                playerAnswerArray.push(catchName)
+                card.cardDivNode.remove()
+                cardsArray.splice(index, 1)
+            }
+        })
+        
+      }
 
 
