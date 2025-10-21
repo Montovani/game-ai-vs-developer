@@ -11,7 +11,6 @@ let player
 // Event Listener
 startGameBtnNode.addEventListener('click', startGame)
 window.addEventListener('keydown', (e)=> {
-    console.log(e.key)
     player.playerMovement(e.key)
 })
 
@@ -19,10 +18,7 @@ function startGame(){
     initialScreenNode.style.display = "none"
     gameRunScreenNode.style.display = "flex"
     
-    // start x = 60
-    //end x maximum = 1000
-    //start y = 250
-    // end y maximum = 550
+    const asnwerArray = ['console','.log','("hello world")']
     player = new Player
     player.addPlayerDOM()
 
@@ -37,21 +33,40 @@ function startGame(){
         new CodeCard('.if'),
         new CodeCard('console')
     ]
-   
-   displayAllCards(cardsArray) 
+    displayAllCards(cardsArray) 
+    console.log(cardsArray[0])
+    console.log(player)
+    
     
     // Start the main game loop
     const mainGameLoopId = setInterval(gameRunning,1000/60)
     
+    function checkColisionPlayerCodeBox () {
+      
+        cardsArray.forEach((card) =>{
+            if (
+                   player.x < card.x + card.w &&
+                    player.x + player.w > card.x &&
+                    player.y < card.y + card.h &&
+                    player.y + player.h > card.y
+            ) {
+                console.log('player collide')
+            }
+        })
+      }
+      function gameRunning() {
+          checkColisionPlayerCodeBox()
+      }
+      function displayAllCards(cardsArr) {
+          for(let i = 0; i < cardsArr.length; i++){
+              cardsArr[i].addCodeCardDOM()
+          }
+      
+      }
+
+      
 }
 
-function gameRunning() {
-    
-}
-function displayAllCards(cardsArr) {
-    for(let i = 0; i < cardsArr.length; i++){
-        cardsArr[i].addCodeCardDOM()
-    }
-}
+
 
 

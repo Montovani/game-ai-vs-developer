@@ -20,24 +20,21 @@ class Player {
 
     playerMovement(keyPressed) {
         
-        if(keyPressed === "s" || keyPressed === "ArrowDown"){
-            this.x += this.speed
-            console.log(this.x)
-            this.imgNode.style.top = `${this.x}px`
+        if (keyPressed === "s" || keyPressed === "ArrowDown") {
+        this.y += this.speed
+        this.imgNode.style.top = `${this.y}px`
         }
-        if(keyPressed === "w" || keyPressed === "ArrowUp"){
-            //Add a condition here to check if the x is not grather than the size of the map like if x is = to 10px don't do nothing.
-            this.x -= this.speed
-            console.log(this.x)
-            this.imgNode.style.top = `${this.x}px`
+        if (keyPressed === "w" || keyPressed === "ArrowUp") {
+        this.y -= this.speed
+        this.imgNode.style.top = `${this.y}px`
         }
-        if(keyPressed === "d" || keyPressed === "ArrowRight"){
-            this.y += this.speed
-            this.imgNode.style.left = `${this.y}px`
+        if (keyPressed === "d" || keyPressed === "ArrowRight") {
+        this.x += this.speed
+        this.imgNode.style.left = `${this.x}px`
         }
-        if(keyPressed === "a" || keyPressed === "ArrowLeft"){
-            this.y -= this.speed
-            this.imgNode.style.left = `${this.y}px`
+        if (keyPressed === "a" || keyPressed === "ArrowLeft") {
+        this.x -= this.speed
+        this.imgNode.style.left = `${this.x}px`
         }
     }
 }
