@@ -36,9 +36,9 @@ class CodeCard {
         //start y = 250 /end y maximum = 550    
         randomX = Math.floor(Math.random() * (1000 - 60) + 60)
         randomY = Math.floor(Math.random() * (550 - 250) + 250)
-        tooClose = placedPositions.some(pos => 
-        Math.abs(pos.x - randomX) < 180 &&  
-        Math.abs(pos.y - randomY) < 80      
+        tooClose = placedPositions.some(posObj => 
+        Math.abs(posObj.x - randomX) < 180 &&  
+        Math.abs(posObj.y - randomY) < 80      
       )
         }
         placedPositions.push({ x: randomX, y: randomY })
