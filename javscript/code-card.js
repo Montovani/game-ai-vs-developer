@@ -12,6 +12,7 @@ class CodeCard {
         cardDivNode.style.border = "2px solid #ef7d57"
         cardDivNode.style.width = `${this.w}px` 
         cardDivNode.style.height = `${this.h}px`
+        cardDivNode.style.padding = "5px"
         cardDivNode.style.borderRadius = "5px"
         cardDivNode.style.backgroundColor = "#1a1c2c"
         cardDivNode.style.position = "absolute"
