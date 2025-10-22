@@ -1,5 +1,9 @@
 body {
     background-color: #333c57;
+     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
 }
 h1 {
     color: white;
@@ -11,16 +15,26 @@ align-items: center;
 height: 1200px;
 width: 100%;
 }
+
 .game-box {
     background-color: #1a1c2c;
     max-width: 100%;
     width: 1400px;
     height: 900px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    
+}
+
+/* Initial Screen CSS */
+.initial-screen {
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
+    
 }
 .ai-img {
     position:absolute;
@@ -74,4 +88,122 @@ width: 100%;
   --t: 0.3s;
   color: #fff;
   transform: scale(1.2,1.2) ;
+}
+
+/* Game Start container */
+.game-run-screen {
+    display: none;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap:15px
+    
+}
+.boss-section {
+
+    width: 95%;
+    height: 15%;
+    margin-top: 20px;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    gap: 30px;
+   
+}
+.map-section {
+    border: 2px solid white;
+    width: 1150px;
+    height: 900px;
+    background-image: url("/img/map-background-08.png");
+    
+    background-size:100%;
+    background-repeat: no-repeat;
+    position:relative;  
+}
+.map-section img {
+    width: 100px;
+    position: absolute;
+    top: 100px;
+    left: 50px;
+}
+
+.boss {
+    margin-left: 10px;
+}
+.boss img {
+   width: 135px;
+}
+.speech-bubble {
+    width: 500px;
+    height: 50px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 300px;
+    border-bottom-left-radius: 1px;
+    padding: 20px;
+    color:white;
+    font-size: 25px;
+     font-family: "VT323", monospace;
+     margin-left: -100px;
+     text-align: center;
+}
+.timer-set{
+    color: white;
+    font-size: 50px;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+.current-total-levels {
+    color:white;
+    font-family: "VT323", monospace;
+    font-size: 30px;
+    padding:10px;
+    border: 1px dotted white;
+}
+.battle-section {
+    width: 95%;
+    height: 15%;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    gap: 30px;
+   
+}
+.player-container {
+    
+    width: 50%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.vs-container {
+    color: white;
+    font-family: "VT323", monospace;
+
+    font-size: 40px;
+}
+.ai-container {
+    
+    width: 50%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.code-collect-box{
+    border: 1px solid white;
+    width: 70%;
+    height: 80%;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+.player-container img {
+    width: 100px;
+}
+.ai-container img {
+    width: 100px;
 }
