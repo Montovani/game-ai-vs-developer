@@ -7,9 +7,8 @@ const secondsNode = document.querySelector('.timer-seconds')
 
 // Event Listener
 startGameBtnNode.addEventListener('click', startGame)
-window.addEventListener('keydown', (e)=> {
-    player.playerMovement(e.key)
-})
+window.addEventListener('keydown', handleKey) 
+    
 
 //Global Variables
 let playerAnswerArray = []
@@ -30,6 +29,7 @@ let mainGameLoopId
 let roundTimeSeconds = 40
 secondsNode.innerHTML = roundTimeSeconds
 let timer
+let indexToCheck = 0
 
 //Global Game Functions
 function startGame(){
@@ -41,7 +41,6 @@ function startGame(){
 
     displayAllCards(cardsArray) 
     
-    
     // Start the main game loop
    mainGameLoopId = setInterval(mainGameLoop,1000/60)
     
@@ -50,8 +49,10 @@ function startGame(){
 
 function mainGameLoop() {
           checkColisionPlayerCodeBox()
-          checkWinner()
+          
       }
+
+
 
 function countDownTimer(roundTime) {
     timer = roundTime
@@ -66,7 +67,9 @@ function countDownTimer(roundTime) {
     },1000)
 }
 
-
+function handleKey(event){
+    player.playerMovement(event.key)
+}
 
 function displayAllCards(cardsArr) {
           for(let i = 0; i < cardsArr.length; i++){
@@ -76,12 +79,13 @@ function displayAllCards(cardsArr) {
       }
 
 function checkWinner() {
-        
+        // Create a Guard Clause to just check if the asnwer arr has the same lenght as the correctasnwer arr
         let counterCorrectWords = 0
+
         for (let i = 0; i < correctAsnwerArray.length; i++ ){
             if(correctAsnwerArray[i] === playerAnswerArray[i]){
                 counterCorrectWords++
-            }
+            } 
         }
         if(counterCorrectWords === correctAsnwerArray.length){
             alert('you won the game')
@@ -100,15 +104,21 @@ function checkColisionPlayerCodeBox () {
                     player.y < card.y + card.h &&
                     player.y + player.h > card.y
             ) {
-                const catchName = card.cardName
-                let newCard = new CodeCard(catchName)
-                playerAnswerArray.push(catchName)
-                newCard.addCardPlayerCode()
-                card.cardDivNode.remove()
-                cardsArray.splice(index, 1)
+                const catchName = card.cardName 
+                if(catchName === correctAsnwerArray[indexToCheck]){
+                    let newCard = new CodeCard(catchName)
+                    playerAnswerArray.push(catchName)
+                    checkWinner()
+                    newCard.addCardPlayerCode()
+                    card.cardDivNode.remove()
+                    cardsArray.splice(index, 1)
+                    indexToCheck += 1
+                } else {
+                    console.log('ohno?')
+                    player.playerRespawn()
+                }
             }
         })
-        
       }
 
 
