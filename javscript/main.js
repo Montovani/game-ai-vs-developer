@@ -22,11 +22,12 @@ let correctAsnwerArray = ['console','.log','("hello world")']
         new CodeCard('.forEach'),
         new CodeCard('x'),
         new CodeCard('.if'),
-        new CodeCard('console')
+        new CodeCard('console'),
+        new CodeCard('{}')
     ]
 let player
 let mainGameLoopId
-let roundTimeSeconds = 40
+let roundTimeSeconds = 25
 secondsNode.innerHTML = roundTimeSeconds
 let timer
 let indexToCheck = 0
@@ -56,9 +57,23 @@ function mainGameLoop() {
 
 function countDownTimer(roundTime) {
     timer = roundTime
+
+    console.log(Math.round(roundTime/1.2))
     timerCountDown = setInterval(()=> {
         timer -= 1
         secondsNode.innerHTML = timer
+        if(timer === Math.round(roundTime/1.2)){
+            let firstAnswerCard = new CodeCard(correctAsnwerArray[0])
+            firstAnswerCard.addCardAiCode()
+        }
+        if(timer === Math.round(roundTime/2)){
+            let firstAnswerCard = new CodeCard(correctAsnwerArray[1])
+            firstAnswerCard.addCardAiCode()
+        }
+        if (timer === 1) {
+            let firstAnswerCard = new CodeCard(correctAsnwerArray[2])
+            firstAnswerCard.addCardAiCode()
+        }
         if (timer === 0) {
             alert('game over')
             clearInterval(mainGameLoopId)

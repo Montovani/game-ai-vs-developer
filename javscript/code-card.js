@@ -50,8 +50,18 @@ class CodeCard {
     }
     addCardPlayerCode(){
         this.cardDivNode.style.position = "static"
-        this.cardDivNode.style.flex = "0 1 20%"
-
+        this.cardDivNode.style.marginTop = "5px"
+        this.cardDivNode.style.width = "fit-content"
+        this.cardDivNode.style.padding = "4px"
+        
         document.querySelector('.code-collect-box-player').append(this.cardDivNode)
+    }
+    addCardAiCode() {
+        this.cardDivNode.style.position = "static"
+        this.cardDivNode.style.marginTop = "5px"
+        this.cardDivNode.style.width = "fit-content"
+        this.cardDivNode.style.padding = "4px"
+        
+        document.querySelector('.code-collect-box-ai').append(this.cardDivNode)
     }
 }
