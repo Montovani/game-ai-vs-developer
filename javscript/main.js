@@ -2,6 +2,8 @@
 const startGameBtnNode = document.querySelector('.start-btn')
 const gameRunScreenNode = document.querySelector('.game-run-screen')
 const initialScreenNode = document.querySelector('.initial-screen')
+const secondsNode = document.querySelector('.timer-seconds')
+
 
 // Event Listener
 startGameBtnNode.addEventListener('click', startGame)
@@ -25,6 +27,9 @@ let correctAsnwerArray = ['console','.log','("hello world")']
     ]
 let player
 let mainGameLoopId
+let roundTimeSeconds = 40
+secondsNode.innerHTML = roundTimeSeconds
+let timer
 
 //Global Game Functions
 function startGame(){
@@ -40,13 +45,26 @@ function startGame(){
     // Start the main game loop
    mainGameLoopId = setInterval(mainGameLoop,1000/60)
     
-        
+    countDownTimer(roundTimeSeconds)
 }
 
 function mainGameLoop() {
           checkColisionPlayerCodeBox()
           checkWinner()
       }
+
+function countDownTimer(roundTime) {
+    timer = roundTime
+    timerCountDown = setInterval(()=> {
+        timer -= 1
+        secondsNode.innerHTML = timer
+        if (timer === 0) {
+            alert('game over')
+            clearInterval(mainGameLoopId)
+            clearInterval(timerCountDown)
+        }
+    },1000)
+}
 
 
 
@@ -68,6 +86,8 @@ function checkWinner() {
         if(counterCorrectWords === correctAsnwerArray.length){
             alert('you won the game')
             clearInterval(mainGameLoopId)
+            clearInterval(timerCountDown)
+
         }
       }
 
