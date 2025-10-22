@@ -194,12 +194,23 @@ width: 100%;
     justify-content: space-between;
     align-items: center;
 }
-.code-collect-box{
+.code-collect-box-player{
     border: 1px solid white;
     width: 70%;
     height: 80%;
     margin-right: 10px;
     border-radius: 10px;
+    display: flex;
+    flex-wrap:wrap;
+}
+.code-collect-box-ai{
+    border: 1px solid white;
+    width: 70%;
+    height: 80%;
+    margin-right: 10px;
+    border-radius: 10px;
+    display: flex;
+    
 }
 .player-container img {
     width: 100px;

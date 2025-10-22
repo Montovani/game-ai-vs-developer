@@ -101,7 +101,9 @@ function checkColisionPlayerCodeBox () {
                     player.y + player.h > card.y
             ) {
                 const catchName = card.cardName
+                let newCard = new CodeCard(catchName)
                 playerAnswerArray.push(catchName)
+                newCard.addCardPlayerCode()
                 card.cardDivNode.remove()
                 cardsArray.splice(index, 1)
             }
@@ -109,4 +111,4 @@ function checkColisionPlayerCodeBox () {
         
       }
 
-//test
+

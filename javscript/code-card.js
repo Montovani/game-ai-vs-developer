@@ -48,4 +48,10 @@ class CodeCard {
         this.cardDivNode.style.top = `${randomY}px`
         document.querySelector('.map-section').append(this.cardDivNode)
     }
+    addCardPlayerCode(){
+        this.cardDivNode.style.position = "static"
+        this.cardDivNode.style.flex = "0 1 20%"
+
+        document.querySelector('.code-collect-box-player').append(this.cardDivNode)
+    }
 }
