@@ -1,4 +1,4 @@
-const placedPositions = []
+git const placedPositions = []
 
 class CodeCard {
     constructor(cardName) {
