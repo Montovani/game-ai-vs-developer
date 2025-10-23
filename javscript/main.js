@@ -11,26 +11,16 @@ window.addEventListener('keydown', handleKey)
     
 
 //Global Variables
-let playerAnswerArray = []
-let correctAsnwerArray = ['console','.log','("hello world")']
- const cardsArray = [
-        new CodeCard('let'),
-        new CodeCard('function'),
-        new CodeCard('.log'),
-        new CodeCard('("hello world")'),
-        new CodeCard('lindt'),
-        new CodeCard('.forEach'),
-        new CodeCard('x'),
-        new CodeCard('.if'),
-        new CodeCard('console'),
-        new CodeCard('{}')
-    ]
+const playerAnswerArray = []
+const correctAsnwerArray = []
+const cardsArray = []
 let player
 let mainGameLoopId
 let roundTimeSeconds = 25
 secondsNode.innerHTML = roundTimeSeconds
 let timer
 let indexToCheck = 0
+let level = 1
 
 //Global Game Functions
 function startGame(){
@@ -39,12 +29,26 @@ function startGame(){
     
     player = new Player
     player.addPlayerDOM()
+    
+    let questions = [
+        new Question('Print hello world in the browser console',['console','.log','("hello world")'],['let','function','.log','("hello world")','lindt','.forEach','x','if','console','{}']),
+        new Question('Declare a variable called "game" that can be changed later.',['let','game'],['letGame','const','y','let','x','game','function','var','='])
+    ]
+    correctAsnwerArray.push(...questions[1].asnwerArr)
+    questions[1].cardsArr.forEach((card)=> {
+        cardsArray.push(new CodeCard(card))
+    })
+    
+
 
     displayAllCards(cardsArray) 
     
     // Start the main game loop
    mainGameLoopId = setInterval(mainGameLoop,1000/60)
-    
+
+
+
+
     countDownTimer(roundTimeSeconds)
 }
 
@@ -87,6 +91,8 @@ function handleKey(event){
 }
 
 function displayAllCards(cardsArr) {
+            console.log(cardsArr)
+            console.log(cardsArr[0])
           for(let i = 0; i < cardsArr.length; i++){
               cardsArr[i].addCodeCardDOM()
           }
