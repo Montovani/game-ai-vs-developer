@@ -12,6 +12,7 @@ class CodeCard {
         cardDivNode.style.border = "2px solid #ef7d57"
         cardDivNode.style.width = `${this.w}px` 
         cardDivNode.style.height = `${this.h}px`
+        cardDivNode.style.padding = "5px"
         cardDivNode.style.borderRadius = "5px"
         cardDivNode.style.backgroundColor = "#1a1c2c"
         cardDivNode.style.position = "absolute"
@@ -47,5 +48,21 @@ class CodeCard {
         this.cardDivNode.style.left = `${randomX}px`
         this.cardDivNode.style.top = `${randomY}px`
         document.querySelector('.map-section').append(this.cardDivNode)
+    }
+    addCardPlayerCode(){
+        this.cardDivNode.style.position = "static"
+        this.cardDivNode.style.marginTop = "5px"
+        this.cardDivNode.style.width = "fit-content"
+        this.cardDivNode.style.padding = "4px"
+        
+        document.querySelector('.code-collect-box-player').append(this.cardDivNode)
+    }
+    addCardAiCode() {
+        this.cardDivNode.style.position = "static"
+        this.cardDivNode.style.marginTop = "5px"
+        this.cardDivNode.style.width = "fit-content"
+        this.cardDivNode.style.padding = "4px"
+        
+        document.querySelector('.code-collect-box-ai').append(this.cardDivNode)
     }
 }
