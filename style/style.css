@@ -115,7 +115,7 @@ width: 100%;
     border: 2px solid white;
     width: 1150px;
     height: 900px;
-    background-image: url("/img/map-background-08.png");
+    background-image: url("../img/map-background-08.png");
     
     background-size:100%;
     background-repeat: no-repeat;

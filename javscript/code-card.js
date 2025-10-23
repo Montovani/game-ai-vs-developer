@@ -9,6 +9,7 @@ class CodeCard {
     }
     createCodeCardDiv(){
         const cardDivNode = document.createElement('div')
+        cardDivNode.classList.add('card-div')
         cardDivNode.style.border = "2px solid #ef7d57"
         cardDivNode.style.width = `${this.w}px` 
         cardDivNode.style.height = `${this.h}px`
@@ -47,7 +48,7 @@ class CodeCard {
         this.y = randomY
         this.cardDivNode.style.left = `${randomX}px`
         this.cardDivNode.style.top = `${randomY}px`
-        document.querySelector('.map-section').append(this.cardDivNode)
+        document.querySelector('.map-section').append(this.cardDivNode) 
     }
     addCardPlayerCode(){
         this.cardDivNode.style.position = "static"
