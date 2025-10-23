@@ -4,7 +4,7 @@ class Player {
       (this.y = 60),
       (this.w = 25),
       (this.h = 55),
-      (this.speed = 10);
+      (this.speed = 20);
     this.imgNode = document.createElement("img");
     this.imgNode.src = "./img/developer-character-topdown.png";
   }
