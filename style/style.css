@@ -365,3 +365,27 @@ width: 100%;
     font-size: 20px;
     text-align: center;
 }
+footer {
+    display: flex;
+    margin: 300px auto 0;
+    justify-content: center;    
+    align-items: center;   
+    justify-content: center;
+    padding: 12px 0;
+}
+.git-logo{
+  width: 30px;                
+  height: 30px;
+  vertical-align: middle;
+  margin-left: 5px;
+  margin-bottom: 4px;
+}
+.footer-text {
+    color:#b3b3be;
+    margin: 0;
+    display: inline;
+    
+}
+.footer-text a {
+    color: #686879 ;
+}

@@ -329,8 +329,9 @@ function gameOver(){
 function checkWinner() {
   
   let counterCorrectWords = 0;
-
-  for (let i = 0; i < correctAsnwerArray.length; i++) {
+  
+  if(playerAnswerArray.length === correctAsnwerArray.length) {
+    for (let i = 0; i < correctAsnwerArray.length; i++) {
     if (correctAsnwerArray[i] === playerAnswerArray[i]) {
       counterCorrectWords++;
     }
@@ -387,6 +388,8 @@ function checkWinner() {
        placedPositions.splice(0,placedPositions.length)
     }
   }
+  }
+  
   }
 
 function checkColisionPlayerCodeBox() {
