@@ -113,24 +113,155 @@ function shuffleQuestions(questionsArr) {
 
 function countDownTimer(roundTime) {
   timer = roundTime;
+  let totalOfAsnwers = correctAsnwerArray.length
+  console.log('total of answes:',totalOfAsnwers)
 
   timerCountDown = setInterval(() => {
     timer -= 1;
     secondsNode.innerHTML = timer;
-    if (timer === Math.round(roundTime / 1.2)) {
-      let firstAnswerCard = new CodeCard(correctAsnwerArray[0]);
-      firstAnswerCard.addCardAiCode();
-      
+
+    if(totalOfAsnwers === 3){
+      if (timer === Math.round(roundTime / 1.2)) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[0]);
+        firstAnswerCard.addCardAiCode();
+        
+      }
+      if (timer === Math.round(roundTime / 2)) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[1]);
+        firstAnswerCard.addCardAiCode();
+      }
+      if (timer === 1) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[2]);
+        firstAnswerCard.addCardAiCode();
+      }
+      if (timer === 0) {
+        console.log('calling game over')
+        gameOver()
+      }
     }
-    if (timer === Math.round(roundTime / 2)) {
-      let firstAnswerCard = new CodeCard(correctAsnwerArray[1]);
-      firstAnswerCard.addCardAiCode();
+    if(totalOfAsnwers === 2){
+      if (timer === Math.round(roundTime / 1.2)) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[0]);
+        firstAnswerCard.addCardAiCode();
+        
+      }
+      if (timer === 1) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[1]);
+        firstAnswerCard.addCardAiCode();
+      }
+      if (timer === 0) {
+        console.log('calling game over')
+        gameOver()
+      }
     }
-    if (timer === 1) {
-      let firstAnswerCard = new CodeCard(correctAsnwerArray[2]);
-      firstAnswerCard.addCardAiCode();
+    if(totalOfAsnwers === 4){
+      if (timer === 35) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[0]);
+        firstAnswerCard.addCardAiCode();
+        
+      }
+      if (timer === 27) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[1]);
+        firstAnswerCard.addCardAiCode();
+        
+      }
+      if (timer === Math.round(roundTime / 2)) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[2]);
+        firstAnswerCard.addCardAiCode();
+      }
+      if (timer === 1) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[3]);
+        firstAnswerCard.addCardAiCode();
+      }
+      if (timer === 0) {
+        console.log('calling game over')
+        gameOver()
+      }
     }
-    if (timer === 0) {
+    if(totalOfAsnwers === 6){
+      if (timer === 35) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[0]);
+        firstAnswerCard.addCardAiCode();
+        
+      }
+      if (timer === 27) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[1]);
+        firstAnswerCard.addCardAiCode();
+        
+      }
+      if (timer === Math.round(roundTime / 2)) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[2]);
+        firstAnswerCard.addCardAiCode();
+      }
+      if (timer === 15) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[3]);
+        firstAnswerCard.addCardAiCode();
+      }
+      if (timer === 10) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[4]);
+        firstAnswerCard.addCardAiCode();
+      }
+      if (timer === 1) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[5]);
+        firstAnswerCard.addCardAiCode();
+      }
+      if (timer === 0) {
+        console.log('calling game over')
+        gameOver()
+      }
+    }
+    if(totalOfAsnwers === 7){
+      if (timer === 37) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[0]);
+        firstAnswerCard.addCardAiCode();
+        
+      }
+      if (timer === 34) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[1]);
+        firstAnswerCard.addCardAiCode();
+        
+      }
+      if (timer === 27) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[2]);
+        firstAnswerCard.addCardAiCode();
+        
+      }
+      if (timer === Math.round(roundTime / 2)) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[3]);
+        firstAnswerCard.addCardAiCode();
+      }
+      if (timer === 15) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[4]);
+        firstAnswerCard.addCardAiCode();
+      }
+      if (timer === 10) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[5]);
+        firstAnswerCard.addCardAiCode();
+      }
+      if (timer === 1) {
+        let firstAnswerCard = new CodeCard(correctAsnwerArray[6]);
+        firstAnswerCard.addCardAiCode();
+      }
+      if (timer === 0) {
+        console.log('calling game over')
+        gameOver()
+      }
+    }
+  }, 1000);
+}
+
+function handleKey(event) {
+  player.playerMovement(event.key);
+}
+
+function displayAllCards(cardsArr) {
+  for (let i = 0; i < cardsArr.length; i++) {
+    cardsArr[i].addCodeCardDOM();
+  }
+}
+
+function gameOver(){
+      console.log('game over was called')
       gameRunScreenNode.style.display = 'none'
       gameOverScreenNode.style.display = 'flex'
       playerScoreNode.innerHTML = currentLevelDashboard - 1
@@ -153,19 +284,8 @@ function countDownTimer(roundTime) {
       correctAsnwerArray.splice(0,correctAsnwerArray.length)
       playerAnswerArray.splice(0,playerAnswerArray.length)
       placedPositions.splice(0,placedPositions.length)
-    }
-  }, 1000);
 }
 
-function handleKey(event) {
-  player.playerMovement(event.key);
-}
-
-function displayAllCards(cardsArr) {
-  for (let i = 0; i < cardsArr.length; i++) {
-    cardsArr[i].addCodeCardDOM();
-  }
-}
 
 function checkWinner() {
   
