@@ -19,6 +19,7 @@ restartGameBtnNode.addEventListener('click',startGame)
 restartGameBtnNode2.addEventListener('click',startGame)
 window.addEventListener("keydown", handleKey);
 
+
 //Global Variables
 const playerAnswerArray = [];
 const correctAsnwerArray = [];
@@ -41,6 +42,17 @@ let currentLevelDashboard = 1
 let totalLevels = questions.length
 totalLevelsNode.innerHTML = totalLevels
 currentLevelNode.innerHTML = currentLevelDashboard
+const mainBgMusic = new Audio("./music/background-music/main-game-music.mp3")
+mainBgMusic.loop = true
+mainBgMusic.volume = 0.1
+const getCardSound = new Audio("./music/sfx/get-card-sound.mp3")
+getCardSound.volume = 1
+const errorCardSound = new Audio("./music/sfx/error-sound.mp3")
+errorCardSound.volume = 0.3
+const nextStageSound = new Audio("./music/sfx/next-stage-sound.mp3")
+nextStageSound.volume = 0.4
+const winGameSound = new Audio("./music/sfx/win-game-sound.mp3")
+winGameSound.volume = 0.4
 
 //Global Game Functions
 function startGame() {
@@ -48,6 +60,8 @@ function startGame() {
   gameOverScreenNode.style.display = "none";
   gameWinScreenNode.style.display = "none";
   gameRunScreenNode.style.display = "flex";
+  mainBgMusic.play()
+
 
   player = new Player();
   player.addPlayerDOM();
@@ -193,6 +207,7 @@ function checkWinner() {
     if(level < 2){
       clearInterval(mainGameLoopId)
       clearInterval(timerCountDown)
+      nextStageSound.play()
       indexToCheck = 0
       counterCorrectWords = 0
       player.x = 70
@@ -209,6 +224,8 @@ function checkWinner() {
       placedPositions.splice(0,placedPositions.length)
       loadLevel2()
     } else if (level = 3){
+      mainBgMusic.pause()
+      winGameSound.play()
       gameRunScreenNode.style.display = 'none'
       gameWinScreenNode.style.display = 'flex'
 
@@ -241,6 +258,7 @@ function checkColisionPlayerCodeBox() {
     ) {
       const catchName = card.cardName;
       if (catchName === correctAsnwerArray[indexToCheck]) {
+        getCardSound.play()
         card.cardDivNode.remove();
         let newCard = new CodeCard(catchName);
         playerAnswerArray.push(catchName);
@@ -249,7 +267,7 @@ function checkColisionPlayerCodeBox() {
         indexToCheck += 1;
         checkWinner();
       } else {
-        console.log("ohno?");
+        errorCardSound.play()
         player.playerRespawn();
       }
     }
