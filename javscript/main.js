@@ -19,11 +19,7 @@ restartGameBtnNode.addEventListener('click',startGame)
 restartGameBtnNode2.addEventListener('click',startGame)
 window.addEventListener("keydown", handleKey);
 
-
-//Global Variables
-const playerAnswerArray = [];
-const correctAsnwerArray = [];
-const cardsArray = [];
+// Questions of the game
 const questions = [ new Question( "Print hello world in the browser console",["console", ".log", '("hello world")'],["let","function",
 ".log",'("hello world")',"lindt",".forEach","x","if","console","{}",]),
 new Question('Declare a variable called "game" that can be changed later.',["let", "game"],["letGame", "const", "y", "let", "x", "game", "function", "var", "="]),
@@ -33,6 +29,11 @@ new Question ('Write a function called "startGame" that returns a string "Game s
 new Question ('Add the values "red", "yellow" and "blue" to the array colors.',['colors','.push','(','"red,"','"yellow,"','"blue"',')'],['colors','.push','(','"red,"','"yellow,"','"blue"',')','.add','green','.pop','const','.length'])
 ];
 
+//Global Variables
+
+const playerAnswerArray = [];
+const correctAsnwerArray = [];
+const cardsArray = [];
 let player;
 let mainGameLoopId;
 let roundTimeSeconds = 40;
@@ -44,6 +45,9 @@ let currentLevelDashboard = 1
 let totalLevels = questions.length
 totalLevelsNode.innerHTML = totalLevels
 currentLevelNode.innerHTML = currentLevelDashboard
+
+
+// Music & SFX
 const mainBgMusic = new Audio("./music/background-music/main-game-music.mp3")
 mainBgMusic.loop = true
 mainBgMusic.volume = 0.1
@@ -57,6 +61,7 @@ const winGameSound = new Audio("./music/sfx/win-game-sound.mp3")
 winGameSound.volume = 0.4
 
 //Global Game Functions
+
 function startGame() {
   initialScreenNode.style.display = "none";
   gameOverScreenNode.style.display = "none";
@@ -74,27 +79,7 @@ function startGame() {
   mainGameLoopId = setInterval(mainGameLoop, 1000 / 60);
   
   loadLevel2()
-  
-  
-
-  
 }
-
-
-// function loadLevel(){
-    
-//     player.addPlayerDOM()
-//     correctAsnwerArray.push(...questions[level].asnwerArr);
-
-//     questions[level].cardsArr.forEach((card) => {
-//         cardsArray.push(new CodeCard(card));
-//   });
-//   speechBubbleNode.innerHTML = questions[level].question;
-//   displayAllCards(cardsArray);
-//   console.log(document.querySelectorAll('.card-div'))
-//   countDownTimer(roundTimeSeconds);
-
-// }
 
 function loadLevel2(){
     console.log('current level', level)
@@ -113,7 +98,6 @@ function loadLevel2(){
 
 }
 
-
 function mainGameLoop() {
   checkColisionPlayerCodeBox();
     
@@ -121,24 +105,10 @@ function mainGameLoop() {
 
 function shuffleQuestions(questionsArr) {
   let shuffleIndex = questionsArr.length
-  //console.log(questionsArr)
   questionsArr.sort((question1,question2)=>{
     let arr = [-1,1]
-   // return -1
    return arr[Math.floor(Math.random()*arr.length)]
   })
-
-
-//   for(let i = questionsArr.length - 1; i > 0;i--){
-//     shuffleIndex = Math.floor(Math.random()*shuffleIndex)
-//     [questionsArr[i],questionsArr[shuffleIndex]] = [questionsArr[shuffleIndex],questionsArr[i]]
-//     shuffleIndex--
-//   }
-
-    // for (let i = questionsArr.length - 1; i > 0; i--) {
-    //         const j = Math.floor(Math.random() * (i + 1)); // random index 0–i
-    //         [questionsArr[i], questionsArr[j]] = [questionsArr[j], questionsArr[i]];   // swap elements
-    //     }
 }
 
 function countDownTimer(roundTime) {
@@ -198,7 +168,7 @@ function displayAllCards(cardsArr) {
 }
 
 function checkWinner() {
-  // Create a Guard Clause to just check if the asnwer arr has the same lenght as the correctasnwer arr
+  
   let counterCorrectWords = 0;
 
   for (let i = 0; i < correctAsnwerArray.length; i++) {
