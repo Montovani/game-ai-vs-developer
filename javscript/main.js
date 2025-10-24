@@ -29,7 +29,7 @@ const questions = [ new Question( "Print hello world in the browser console",["c
 new Question('Declare a variable called "game" that can be changed later.',["let", "game"],["letGame", "const", "y", "let", "x", "game", "function", "var", "="]),
 new Question('Create a constant named "player" with value "Dev".',["const", "player", "=", 'Dev'],
       ["let","var","create","Dev",'player',"game","define","function","true","const","=",]),
-new Question ('Write a function called "startGame" that returns a message.',['function','startGame()','{','return','"Game started"','}'],['function','startGame()','{','return','"Game started"','}','console.log','alert(','print','let']),
+new Question ('Write a function called "startGame" that returns a string "Game started".',['function','startGame()','{','return','"Game started"','}'],['function','startGame()','{','return','"Game started"','}','console.log','alert(','print','let']),
 new Question ('Add the values "red", "yellow" and "blue" to the array colors.',['colors','.push','(','"red,"','"yellow,"','"blue"',')'],['colors','.push','(','"red,"','"yellow,"','"blue"',')','.add','green','.pop','const','.length'])
 ];
 
