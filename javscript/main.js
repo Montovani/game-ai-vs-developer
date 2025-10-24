@@ -3,6 +3,8 @@ const startGameBtnNode = document.querySelector(".start-btn");
 const gameRunScreenNode = document.querySelector(".game-run-screen");
 const initialScreenNode = document.querySelector(".initial-screen");
 const gameOverScreenNode = document.querySelector('.game-over-screen')
+const gameDifficultyScreenNode =  document.querySelector('.game-difficulty-screen')
+const answerContainerNode = document.querySelector('.easy-mode-container')
 const secondsNode = document.querySelector(".timer-seconds");
 const speechBubbleNode = document.querySelector(".speech-bubble");
 const restartGameBtnNode = document.querySelector('.restart-btn')
@@ -12,11 +14,18 @@ const currentLevelNode = document.querySelector('.current-level')
 const totalLevelsNode = document.querySelector('.total-levels-dashboard')
 const playerScoreNode = document.querySelector('.player-score')
 const totalLevelsGameOverNode = document.querySelector('.total-levels')
+const normalBtnNode = document.querySelector('.normal-mode-btn')
+const easyBtnNode = document.querySelector('.easy-mode-btn')
+const showAnswerBtnNode = document.querySelector('.show-answer-btn')
+const answerParagraphNode = document.querySelector('.asnwer-p')
 
 // Event Listener
-startGameBtnNode.addEventListener("click", startGame);
-restartGameBtnNode.addEventListener('click',startGame)
-restartGameBtnNode2.addEventListener('click',startGame)
+startGameBtnNode.addEventListener("click", chooseModeScreen);
+normalBtnNode.addEventListener('click', () => startGame('normal'))
+easyBtnNode.addEventListener('click', ()=> startGame('easy'))
+restartGameBtnNode.addEventListener('click',()=> startGame(gameMode))
+restartGameBtnNode2.addEventListener('click',()=> startGame(gameMode))
+showAnswerBtnNode.addEventListener('click',revealAnswer)
 window.addEventListener("keydown", handleKey);
 
 // Questions of the game
@@ -43,6 +52,9 @@ let indexToCheck = 0;
 let level = 0;
 let currentLevelDashboard = 1
 let totalLevels = questions.length
+let gameMode
+let asnwerText
+console.log('initial gameMOde:',gameMode)
 totalLevelsNode.innerHTML = totalLevels
 currentLevelNode.innerHTML = currentLevelDashboard
 
@@ -62,13 +74,37 @@ winGameSound.volume = 0.4
 
 //Global Game Functions
 
-function startGame() {
+function revealAnswer(){
+  asnwerText = correctAsnwerArray.toString()
+  answerParagraphNode.innerHTML = asnwerText
+}
+
+function chooseModeScreen() {
   initialScreenNode.style.display = "none";
   gameOverScreenNode.style.display = "none";
   gameWinScreenNode.style.display = "none";
+  gameRunScreenNode.style.display = "none";
+  gameDifficultyScreenNode.style.display = "flex";
+}
+
+function startGame(choosenMode) {
+  initialScreenNode.style.display = "none";
+  gameOverScreenNode.style.display = "none";
+  gameWinScreenNode.style.display = "none";
+  gameDifficultyScreenNode.style.display = "none";
+  answerContainerNode.style.display = "none";
   gameRunScreenNode.style.display = "flex";
   mainBgMusic.play()
+  gameMode = 'normal'
+  console.log('next game mode',gameMode)
 
+  if(choosenMode === 'easy'){
+    gameMode = 'easy'
+    roundTimeSeconds = 45
+    secondsNode.innerHTML = roundTimeSeconds;
+    console.log('next game Mode', gameMode)
+    answerContainerNode.style.display = "flex";
+  }
 
   player = new Player();
   player.addPlayerDOM();
@@ -263,6 +299,7 @@ function displayAllCards(cardsArr) {
 function gameOver(){
       console.log('game over was called')
       gameRunScreenNode.style.display = 'none'
+      answerContainerNode.style.display = "none"
       gameOverScreenNode.style.display = 'flex'
       playerScoreNode.innerHTML = currentLevelDashboard - 1
       totalLevelsGameOverNode.innerHTML = totalLevels
@@ -279,6 +316,8 @@ function gameOver(){
       player = null
       currentLevelDashboard = 1
       currentLevelNode.innerHTML = currentLevelDashboard
+      asnwerText = ""
+      answerParagraphNode.innerHTML = asnwerText
       cardsArray.splice(0,cardsArray.length)
       document.querySelectorAll('.card-div').forEach(cardDiv => cardDiv.remove())
       correctAsnwerArray.splice(0,correctAsnwerArray.length)
@@ -300,6 +339,8 @@ function checkWinner() {
     if(level < 4){
       clearInterval(mainGameLoopId)
       clearInterval(timerCountDown)
+      asnwerText = ""
+      answerParagraphNode.innerHTML = asnwerText
       timer = roundTimeSeconds
       secondsNode.innerHTML = timer;
       nextStageSound.play()
@@ -322,10 +363,13 @@ function checkWinner() {
       mainBgMusic.pause()
       winGameSound.play()
       gameRunScreenNode.style.display = 'none'
+      answerContainerNode.style.display = "none"
       gameWinScreenNode.style.display = 'flex'
 
        clearInterval(mainGameLoopId);
        clearInterval(timerCountDown);
+       asnwerText = ""
+       answerParagraphNode.innerHTML = asnwerText
        timer = roundTimeSeconds
        secondsNode.innerHTML = timer;
        indexToCheck = 0
