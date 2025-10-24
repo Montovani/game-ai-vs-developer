@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=VT323&display=swap" rel="stylesheet">   
-    <title>Developer vs AI</title>
+    <title>Developer vs AI Game</title>
   </head>
   <body>
       <section class="game-container">
@@ -60,6 +60,31 @@
                     <div class="code-collect-box-ai"></div>
                 </div>
             </div>
+        </div>
+        <!--Game over screen-->
+        <div class="game-over-screen">
+          <div class="game-over-container">
+            <img src="./img/ai-character.png" alt="">
+            <div>
+              <h2>The AI beat you &#128561; &#128561;</h2>
+              <p>You score <span class="player-score">3</span> of <span class="total-levels">5</span> Levels</p>
+              <p>Let's try again?</p>
+            </div>
+          </div>
+          <button class="restart-btn liquid">Restart game</button>
+
+        </div>
+        <!-- Game win screen-->
+         <div class="game-win-screen">
+          <div class="game-win-container">
+            <img src="./img/developer-character-happy.png" alt="">
+            <div>
+              <h2>You beat the AI! &#128526 &#128640</h2>
+              <p>Congratulations! You're a rockstar developer</p>
+            </div>
+          </div>
+          <button class="restart-btn2 liquid">Restart game</button>
+
         </div>
       </div>
     </section>

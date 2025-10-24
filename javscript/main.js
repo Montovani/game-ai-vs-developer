@@ -2,11 +2,16 @@
 const startGameBtnNode = document.querySelector(".start-btn");
 const gameRunScreenNode = document.querySelector(".game-run-screen");
 const initialScreenNode = document.querySelector(".initial-screen");
+const gameOverScreenNode = document.querySelector('.game-over-screen')
 const secondsNode = document.querySelector(".timer-seconds");
 const speechBubbleNode = document.querySelector(".speech-bubble");
-
+const restartGameBtnNode = document.querySelector('.restart-btn')
+const gameWinScreenNode = document.querySelector('.game-win-screen')
+const restartGameBtnNode2 = document.querySelector('.restart-btn2')
 // Event Listener
 startGameBtnNode.addEventListener("click", startGame);
+restartGameBtnNode.addEventListener('click',startGame)
+restartGameBtnNode2.addEventListener('click',startGame)
 window.addEventListener("keydown", handleKey);
 
 //Global Variables
@@ -32,6 +37,8 @@ let level = 0;
 //Global Game Functions
 function startGame() {
   initialScreenNode.style.display = "none";
+  gameOverScreenNode.style.display = "none";
+  gameWinScreenNode.style.display = "none";
   gameRunScreenNode.style.display = "flex";
 
   player = new Player();
@@ -131,9 +138,23 @@ function countDownTimer(roundTime) {
       firstAnswerCard.addCardAiCode();
     }
     if (timer === 0) {
-      alert("game over");
+      gameRunScreenNode.style.display = 'none'
+      gameOverScreenNode.style.display = 'flex'
+
       clearInterval(mainGameLoopId);
       clearInterval(timerCountDown);
+      indexToCheck = 0
+      counterCorrectWords = 0
+      level = 0
+      timer = 0
+      player.imgNode.remove()
+      player = null
+      console.log(player)
+      cardsArray.splice(0,cardsArray.length)
+      document.querySelectorAll('.card-div').forEach(cardDiv => cardDiv.remove())
+      correctAsnwerArray.splice(0,correctAsnwerArray.length)
+      playerAnswerArray.splice(0,playerAnswerArray.length)
+      placedPositions.splice(0,placedPositions.length)
     }
   }, 1000);
 }
@@ -176,9 +197,23 @@ function checkWinner() {
       placedPositions.splice(0,placedPositions.length)
       loadLevel2()
     } else if (level = 3){
-        clearInterval(timerCountDown);
-        clearInterval(mainGameLoopId);
-        alert('you win the game')
+      gameRunScreenNode.style.display = 'none'
+      gameWinScreenNode.style.display = 'flex'
+
+       clearInterval(mainGameLoopId);
+       clearInterval(timerCountDown);
+       indexToCheck = 0
+       counterCorrectWords = 0
+       level = 0
+       timer = 0
+       player.imgNode.remove()
+       player = null
+       console.log(player)
+       cardsArray.splice(0,cardsArray.length)
+       document.querySelectorAll('.card-div').forEach(cardDiv => cardDiv.remove())
+       correctAsnwerArray.splice(0,correctAsnwerArray.length)
+       playerAnswerArray.splice(0,playerAnswerArray.length)
+       placedPositions.splice(0,placedPositions.length)
     }
   }
   }

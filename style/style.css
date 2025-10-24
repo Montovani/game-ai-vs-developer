@@ -12,15 +12,14 @@ h1 {
 display: flex;
 justify-content: center;
 align-items: center;
-height: 1200px;
+margin-top: 30px;
 width: 100%;
 }
-
 .game-box {
     background-color: #1a1c2c;
     max-width: 100%;
-    width: 1400px;
-    height: 900px;
+    width: 1200px;
+    height: 800px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -63,8 +62,8 @@ width: 100%;
     flex-direction: column;
     gap: 20px;
 }
-.start-btn, .rules-btn {
-    position: relative;
+.start-btn, .rules-btn, .restart-btn, .restart-btn2 {
+  position: relative;
   padding: 1rem 2rem;
   font-size: 1rem;
   font-weight: 600;
@@ -221,3 +220,106 @@ width: 100%;
 .ai-container img {
     width: 100px;
 }
+/* Game over screen */
+.game-over-screen {
+    display: none;
+    flex-direction: column;
+    gap: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.game-over-container {
+    display: flex;
+    width: 800px;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 100px
+}
+.game-over-container img {
+    width: 400px;
+    height: 400px;
+}
+.game-over-container h2 {
+    text-align: center;
+    font-size: 80px;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    color: white;
+}
+.restart-btn {
+    width: 200px;
+}
+.player-score {
+    text-align: center;
+    font-size: 50px;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    color: white;
+    color: red;
+}
+.total-levels {
+    text-align: center;
+    font-size: 50px;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    color: rgb(76, 192, 40);
+}
+.game-over-container div p {
+    text-align: center;
+    font-size: 30px;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    color: white;
+} 
+
+/* Game win screen */
+.game-win-screen {
+    display: none;
+    flex-direction: column;
+    gap: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.game-win-container {
+    display: flex;
+    width: 800px;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 100px
+}
+.game-win-container img {
+    width: 400px;
+    height: 400px;
+}
+.game-win-container h2 {
+    text-align: center;
+    font-size: 80px;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    color: white;
+}
+.restart-btn {
+    width: 200px;
+}
+.player-score {
+    text-align: center;
+    font-size: 50px;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    color: white;
+    color: red;
+}
+.total-levels {
+    text-align: center;
+    font-size: 50px;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    color: rgb(76, 192, 40);
+}
+.game-win-container div p {
+    text-align: center;
+    font-size: 40px;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    color: white;
+} 
