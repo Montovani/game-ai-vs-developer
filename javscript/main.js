@@ -8,6 +8,9 @@ const speechBubbleNode = document.querySelector(".speech-bubble");
 const restartGameBtnNode = document.querySelector('.restart-btn')
 const gameWinScreenNode = document.querySelector('.game-win-screen')
 const restartGameBtnNode2 = document.querySelector('.restart-btn2')
+const currentLevelNode = document.querySelector('.current-level')
+const totalLevelsNode = document.querySelector('.total-levels-dashboard')
+
 // Event Listener
 startGameBtnNode.addEventListener("click", startGame);
 restartGameBtnNode.addEventListener('click',startGame)
@@ -32,7 +35,10 @@ secondsNode.innerHTML = roundTimeSeconds;
 let timer;
 let indexToCheck = 0;
 let level = 0;
-
+let currentLevelDashboard = 1
+let totalLevels = questions.length
+totalLevelsNode.innerHTML = totalLevels
+currentLevelNode.innerHTML = currentLevelDashboard
 
 //Global Game Functions
 function startGame() {
@@ -188,10 +194,11 @@ function checkWinner() {
       player.y = 60
       player.imgNode.style.top = `${player.x}px`;
       player.imgNode.style.left = `${player.y}px`;
-      alert("you win the round");
       cardsArray.splice(0,cardsArray.length)
       document.querySelectorAll('.card-div').forEach(cardDiv => cardDiv.remove())
       level++
+      currentLevelDashboard++
+      currentLevelNode.innerHTML = currentLevelDashboard
       correctAsnwerArray.splice(0,correctAsnwerArray.length)
       playerAnswerArray.splice(0,playerAnswerArray.length)
       placedPositions.splice(0,placedPositions.length)
@@ -206,9 +213,10 @@ function checkWinner() {
        counterCorrectWords = 0
        level = 0
        timer = 0
+       currentLevelDashboard = 1
+       currentLevelNode.innerHTML = currentLevelDashboard
        player.imgNode.remove()
        player = null
-       console.log(player)
        cardsArray.splice(0,cardsArray.length)
        document.querySelectorAll('.card-div').forEach(cardDiv => cardDiv.remove())
        correctAsnwerArray.splice(0,correctAsnwerArray.length)
