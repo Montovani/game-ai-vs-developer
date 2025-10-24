@@ -10,6 +10,8 @@ const gameWinScreenNode = document.querySelector('.game-win-screen')
 const restartGameBtnNode2 = document.querySelector('.restart-btn2')
 const currentLevelNode = document.querySelector('.current-level')
 const totalLevelsNode = document.querySelector('.total-levels-dashboard')
+const playerScoreNode = document.querySelector('.player-score')
+const totalLevelsGameOverNode = document.querySelector('.total-levels')
 
 // Event Listener
 startGameBtnNode.addEventListener("click", startGame);
@@ -146,6 +148,8 @@ function countDownTimer(roundTime) {
     if (timer === 0) {
       gameRunScreenNode.style.display = 'none'
       gameOverScreenNode.style.display = 'flex'
+      playerScoreNode.innerHTML = currentLevelDashboard
+      totalLevelsGameOverNode.innerHTML = totalLevels
 
       clearInterval(mainGameLoopId);
       clearInterval(timerCountDown);
@@ -155,7 +159,8 @@ function countDownTimer(roundTime) {
       timer = 0
       player.imgNode.remove()
       player = null
-      console.log(player)
+      currentLevelDashboard = 1
+      currentLevelNode.innerHTML = currentLevelDashboard
       cardsArray.splice(0,cardsArray.length)
       document.querySelectorAll('.card-div').forEach(cardDiv => cardDiv.remove())
       correctAsnwerArray.splice(0,correctAsnwerArray.length)
