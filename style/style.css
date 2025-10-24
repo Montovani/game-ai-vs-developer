@@ -62,7 +62,7 @@ width: 100%;
     flex-direction: column;
     gap: 20px;
 }
-.start-btn, .rules-btn, .restart-btn {
+.start-btn, .rules-btn, .restart-btn, .restart-btn2 {
   position: relative;
   padding: 1rem 2rem;
   font-size: 1rem;
