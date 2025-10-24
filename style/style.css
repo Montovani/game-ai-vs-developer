@@ -62,7 +62,7 @@ width: 100%;
     flex-direction: column;
     gap: 20px;
 }
-.start-btn, .rules-btn, .restart-btn, .restart-btn2 {
+.start-btn, .rules-btn, .restart-btn, .restart-btn2, .easy-mode-btn, .normal-mode-btn, .show-answer-btn {
   position: relative;
   padding: 1rem 2rem;
   font-size: 1rem;
@@ -323,3 +323,69 @@ width: 100%;
     font-weight: 400;
     color: white;
 } 
+/* Game Difficulty Screen */
+.game-difficulty-screen {
+    
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+}
+.choose-difficulty {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    color: white;
+    font-size: 50px;
+}
+.easy-mode-expl {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    color: white;
+    font-size: 20px;
+}
+/* Answer container */ 
+.easy-mode-container {
+    display: none;
+    justify-content: center;
+    margin-top: 10px;
+    height: 50px;
+    gap: 50px;
+}
+.answer-box {
+    background-color: #1a1c2cab;
+    width: 600px;
+    height: 100px;
+}
+.asnwer-p {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+footer {
+    display: flex;
+    margin: 300px auto 0;
+    justify-content: center;    
+    align-items: center;   
+    justify-content: center;
+    padding: 12px 0;
+}
+.git-logo{
+  width: 30px;                
+  height: 30px;
+  vertical-align: middle;
+  margin-left: 5px;
+  margin-bottom: 4px;
+}
+.footer-text {
+    color:#b3b3be;
+    margin: 0;
+    display: inline;
+    
+}
+.footer-text a {
+    color: #686879 ;
+}
