@@ -25,7 +25,7 @@
           </div>
           <div class="start-menu">
             <button class="start-btn liquid">Start Game</button>
-            <button class="rules-btn liquid">Rules</button>
+           <!-- I will apply this btn later <button class="rules-btn liquid">Rules</button> -->
           </div>
         </div>
          <!-- Game run screen-->
@@ -39,7 +39,7 @@
                     <p class="timer-set"> 0:<span class ="timer-seconds"></span></p>
                 </div>   
                 <div class="level">
-                    <p class="current-total-levels"> 1/10</p>
+                    <p class="current-total-levels"> <span class ='current-level'></span>/<span class = 'total-levels-dashboard'></span></p>
                 </div>
             </div>
             <div class="map-section">
@@ -67,8 +67,8 @@
             <img src="./img/ai-character.png" alt="">
             <div>
               <h2>The AI beat you &#128561; &#128561;</h2>
-              <p>You score <span class="player-score">3</span> of <span class="total-levels">5</span> Levels</p>
-              <p>Let's try again?</p>
+              <p>You scored <span class="player-score">3</span> out of <span class="total-levels">5</span> Levels</p>
+              <p>Want to try again?</p>
             </div>
           </div>
           <button class="restart-btn liquid">Restart game</button>
