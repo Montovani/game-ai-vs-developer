@@ -29,11 +29,13 @@ const questions = [ new Question( "Print hello world in the browser console",["c
 new Question('Declare a variable called "game" that can be changed later.',["let", "game"],["letGame", "const", "y", "let", "x", "game", "function", "var", "="]),
 new Question('Create a constant named "player" with value "Dev".',["const", "player", "=", 'Dev'],
       ["let","var","create","Dev",'player',"game","define","function","true","const","=",]),
+new Question ('Write a function called "startGame" that returns a message.',['function','startGame()','{','return','"Game started"','}'],['function','startGame()','{','return','"Game started"','}','console.log','alert(','print','let']),
+new Question ('Add the values "red", "yellow" and "blue" to the array colors.',['colors','.push','(','"red,"','"yellow,"','"blue"',')'],['colors','.push','(','"red,"','"yellow,"','"blue"',')','.add','green','.pop','const','.length'])
 ];
 
 let player;
 let mainGameLoopId;
-let roundTimeSeconds = 25;
+let roundTimeSeconds = 40;
 secondsNode.innerHTML = roundTimeSeconds;
 let timer;
 let indexToCheck = 0;
@@ -74,26 +76,25 @@ function startGame() {
   loadLevel2()
   
   
-  
-  
+
   
 }
 
 
-function loadLevel(){
+// function loadLevel(){
     
-    player.addPlayerDOM()
-    correctAsnwerArray.push(...questions[level].asnwerArr);
+//     player.addPlayerDOM()
+//     correctAsnwerArray.push(...questions[level].asnwerArr);
 
-    questions[level].cardsArr.forEach((card) => {
-        cardsArray.push(new CodeCard(card));
-  });
-  speechBubbleNode.innerHTML = questions[level].question;
-  displayAllCards(cardsArray);
-  console.log(document.querySelectorAll('.card-div'))
-  countDownTimer(roundTimeSeconds);
+//     questions[level].cardsArr.forEach((card) => {
+//         cardsArray.push(new CodeCard(card));
+//   });
+//   speechBubbleNode.innerHTML = questions[level].question;
+//   displayAllCards(cardsArray);
+//   console.log(document.querySelectorAll('.card-div'))
+//   countDownTimer(roundTimeSeconds);
 
-}
+// }
 
 function loadLevel2(){
     console.log('current level', level)
@@ -162,11 +163,13 @@ function countDownTimer(roundTime) {
     if (timer === 0) {
       gameRunScreenNode.style.display = 'none'
       gameOverScreenNode.style.display = 'flex'
-      playerScoreNode.innerHTML = currentLevelDashboard
+      playerScoreNode.innerHTML = currentLevelDashboard - 1
       totalLevelsGameOverNode.innerHTML = totalLevels
 
       clearInterval(mainGameLoopId);
       clearInterval(timerCountDown);
+      timer = roundTimeSeconds
+      secondsNode.innerHTML = timer;
       indexToCheck = 0
       counterCorrectWords = 0
       level = 0
@@ -204,9 +207,11 @@ function checkWinner() {
     }
   }
   if (counterCorrectWords === correctAsnwerArray.length) {
-    if(level < 2){
+    if(level < 4){
       clearInterval(mainGameLoopId)
       clearInterval(timerCountDown)
+      timer = roundTimeSeconds
+      secondsNode.innerHTML = timer;
       nextStageSound.play()
       indexToCheck = 0
       counterCorrectWords = 0
@@ -223,7 +228,7 @@ function checkWinner() {
       playerAnswerArray.splice(0,playerAnswerArray.length)
       placedPositions.splice(0,placedPositions.length)
       loadLevel2()
-    } else if (level = 3){
+    } else if (level = 5){
       mainBgMusic.pause()
       winGameSound.play()
       gameRunScreenNode.style.display = 'none'
@@ -231,6 +236,8 @@ function checkWinner() {
 
        clearInterval(mainGameLoopId);
        clearInterval(timerCountDown);
+       timer = roundTimeSeconds
+       secondsNode.innerHTML = timer;
        indexToCheck = 0
        counterCorrectWords = 0
        level = 0
