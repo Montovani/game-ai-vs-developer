@@ -20,7 +20,7 @@ class Player {
 
   playerMovement(keyPressed) {
     if (keyPressed === "s" || keyPressed === "ArrowDown") {
-      if(!(this.y >= 440)){
+      if(!(this.y >= 400)){
         this.y += this.speed;
         this.imgNode.style.top = `${this.y}px`;
       }
