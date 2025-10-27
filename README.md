@@ -15,13 +15,16 @@ Move around the map, collect the right code cards, and survive each round!
 ---
 ## Main characters
 - Dev
-![dev](./img/developer-character.png)
+
+<img src="./img/developer-character.png" alt="Dev" width="100">
 
 - AI
-![ai](./img/ai-character.png)
+
+![ai]()
+<img src="./img/ai-character.png" alt="Dev" width="100">
 
 -Boss
-![boss](./img/boss-img.png)
+<img src="./img/boss-img.png" alt="Dev" width="100">
 
 ## ⚙️ Main Functionalities  
 - Code question and answer system with interactive cards  
