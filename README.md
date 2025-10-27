@@ -20,7 +20,6 @@ Move around the map, collect the right code cards, and survive each round!
 
 - AI
 
-![ai]()
 <img src="./img/ai-character.png" alt="Dev" width="100">
 
 -Boss
