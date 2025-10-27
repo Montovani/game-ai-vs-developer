@@ -41,7 +41,7 @@ new Question ('Add the values "red", "yellow" and "blue" to the array colors.',[
 //Global Variables
 
 const playerAnswerArray = [];
-const correctAsnwerArray = [];
+let correctAsnwerArray = [];
 const cardsArray = [];
 let player;
 let mainGameLoopId;
@@ -57,12 +57,15 @@ let asnwerText
 console.log('initial gameMOde:',gameMode)
 totalLevelsNode.innerHTML = totalLevels
 currentLevelNode.innerHTML = currentLevelDashboard
+let placedPositions = []
+let maxLoop = 20000
+let currentLoop = 0
 
 
 // Music & SFX
 const mainBgMusic = new Audio("./music/background-music/main-game-music.mp3")
 mainBgMusic.loop = true
-mainBgMusic.volume = 0.1
+mainBgMusic.volume = 0.01
 const getCardSound = new Audio("./music/sfx/get-card-sound.mp3")
 getCardSound.volume = 1
 const errorCardSound = new Audio("./music/sfx/error-sound.mp3")
@@ -107,7 +110,6 @@ function startGame(choosenMode) {
   }
 
   player = new Player();
-  player.addPlayerDOM();
 
   shuffleQuestions(questions);
 
@@ -118,19 +120,18 @@ function startGame(choosenMode) {
 }
 
 function loadLevel2(){
-    console.log('current level', level)
-    player.addPlayerDOM()
-    correctAsnwerArray.push(...questions[level].asnwerArr);
-    speechBubbleNode.innerHTML = questions[level].question;
-    questions[level].cardsArr.forEach((card) => {
-        cardsArray.push(new CodeCard(card));
-    });
-    displayAllCards(cardsArray);
-    countDownTimer(roundTimeSeconds);
-    indexToCheck = 0
-    console.log('current index to check', indexToCheck)
-    mainGameLoopId = setInterval(mainGameLoop,1000/60)
+  indexToCheck = 0
+  correctAsnwerArray = [...questions[level].asnwerArr] ;
+  speechBubbleNode.innerHTML = questions[level].question;
+  questions[level].cardsArr.forEach((card) => {
+    cardsArray.push(new CodeCard(card));
+  });
+  player.addPlayerDOM()
+  console.log('current level', level, 'Player answer array', playerAnswerArray, 'correct answer array', correctAsnwerArray, 'cards array', cardsArray,'questions[level]',questions[level] )
     
+  displayAllCards(cardsArray);
+  countDownTimer(roundTimeSeconds);
+  mainGameLoopId = setInterval(mainGameLoop,1000/60)  
 
 }
 
@@ -291,6 +292,7 @@ function handleKey(event) {
 }
 
 function displayAllCards(cardsArr) {
+  placedPositions = []
   for (let i = 0; i < cardsArr.length; i++) {
     cardsArr[i].addCodeCardDOM();
   }
@@ -328,7 +330,7 @@ function gameOver(){
 
 function checkWinner() {
   
-  let counterCorrectWords = 0;
+   let counterCorrectWords = 0;
   
   if(playerAnswerArray.length === correctAsnwerArray.length) {
     for (let i = 0; i < correctAsnwerArray.length; i++) {
@@ -337,14 +339,38 @@ function checkWinner() {
     }
   }
   if (counterCorrectWords === correctAsnwerArray.length) {
+  
+ console.log(level)
     if(level < 4){
+      clearTheLevel()
+      nextStageSound.play()
+      
       clearInterval(mainGameLoopId)
       clearInterval(timerCountDown)
+
+      loadLevel2()
+    } else if (level >= 4){
+      mainBgMusic.pause()
+      winGameSound.play()
+      gameRunScreenNode.style.display = 'none'
+      answerContainerNode.style.display = "none"
+      gameWinScreenNode.style.display = 'flex'
+
+      cleartheGame()
+       
+       
+       clearInterval(mainGameLoopId);
+       clearInterval(timerCountDown);
+    }
+  }
+  }
+}
+
+function clearTheLevel(){
       asnwerText = ""
       answerParagraphNode.innerHTML = asnwerText
       timer = roundTimeSeconds
       secondsNode.innerHTML = timer;
-      nextStageSound.play()
       indexToCheck = 0
       counterCorrectWords = 0
       player.x = 70
@@ -359,16 +385,9 @@ function checkWinner() {
       correctAsnwerArray.splice(0,correctAsnwerArray.length)
       playerAnswerArray.splice(0,playerAnswerArray.length)
       placedPositions.splice(0,placedPositions.length)
-      loadLevel2()
-    } else if (level = 5){
-      mainBgMusic.pause()
-      winGameSound.play()
-      gameRunScreenNode.style.display = 'none'
-      answerContainerNode.style.display = "none"
-      gameWinScreenNode.style.display = 'flex'
+}  
 
-       clearInterval(mainGameLoopId);
-       clearInterval(timerCountDown);
+function cleartheGame (){
        asnwerText = ""
        answerParagraphNode.innerHTML = asnwerText
        timer = roundTimeSeconds
@@ -386,11 +405,7 @@ function checkWinner() {
        correctAsnwerArray.splice(0,correctAsnwerArray.length)
        playerAnswerArray.splice(0,playerAnswerArray.length)
        placedPositions.splice(0,placedPositions.length)
-    }
-  }
-  }
-  
-  }
+}
 
 function checkColisionPlayerCodeBox() {
   cardsArray.forEach((card, index) => {

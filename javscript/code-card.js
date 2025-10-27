@@ -1,4 +1,4 @@
-const placedPositions = []
+
 
 class CodeCard {
     constructor(cardName) {
@@ -32,23 +32,25 @@ class CodeCard {
         let randomX, randomY
         let tooClose = true
 
-        while (tooClose) {
+        while (tooClose && currentLoop < maxLoop) {
         // The random position should follow this rule because of the map size:
         // start x = 60 / end x maximum = 1000
         //start y = 250 /end y maximum = 550    
         randomX = Math.floor(Math.random() * (1000 - 60) + 60)
         randomY = Math.floor(Math.random() * (380 - 170) + 170)
         tooClose = placedPositions.some(posObj => 
-        Math.abs(posObj.x - randomX) < 180 &&  
-        Math.abs(posObj.y - randomY) < 80      
-      )
+            Math.abs(posObj.x - randomX) < 180 &&  
+            Math.abs(posObj.y - randomY) < 80 
+            )
+        currentLoop++
         }
         placedPositions.push({ x: randomX, y: randomY })
         this.x = randomX
         this.y = randomY
         this.cardDivNode.style.left = `${randomX}px`
         this.cardDivNode.style.top = `${randomY}px`
-        document.querySelector('.map-section').append(this.cardDivNode) 
+        document.querySelector('.map-section').append(this.cardDivNode)
+        currentLoop = 0;
     }
     addCardPlayerCode(){
         this.cardDivNode.style.position = "static"
