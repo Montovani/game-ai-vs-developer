@@ -22,7 +22,7 @@ Move around the map, collect the right code cards, and survive each round!
 
 <img src="./img/ai-character.png" alt="Dev" width="100">
 
--Boss
+- Boss
 <img src="./img/boss-img.png" alt="Dev" width="100">
 
 ## ⚙️ Main Functionalities  
