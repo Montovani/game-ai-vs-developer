@@ -31,7 +31,7 @@ window.addEventListener("keydown", handleKey);
 // Questions of the game
 const questions = [ new Question( "Print hello world in the browser console",["console", ".log", '("hello world")'],["let","function",
 ".log",'("hello world")',"lindt",".forEach","x","if","console","{}",]),
-new Question('Declare a variable called "game" that can be changed later.',["let", "game"],["letGame", "const", "y", "let", "x", "game", "function", "var", "="]),
+new Question('Declare a variable called "game" that can be changed later.',["let", "game"],["letGame", "const", "y", "let", "x", "game", "function", "Var", "="]),
 new Question('Create a constant named "player" with value "Dev".',["const", "player", "=", 'Dev'],
       ["let","var","create","Dev",'player',"game","define","function","true","const","=",]),
 new Question ('Write a function called "startGame" that returns a string "Game started".',['function','startGame()','{','return','"Game started"','}'],['function','startGame()','{','return','"Game started"','}','console.log','alert(','print','let']),
