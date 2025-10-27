@@ -65,7 +65,7 @@ let currentLoop = 0
 // Music & SFX
 const mainBgMusic = new Audio("./music/background-music/main-game-music.mp3")
 mainBgMusic.loop = true
-mainBgMusic.volume = 0.01
+mainBgMusic.volume = 0.08
 const getCardSound = new Audio("./music/sfx/get-card-sound.mp3")
 getCardSound.volume = 1
 const errorCardSound = new Audio("./music/sfx/error-sound.mp3")
